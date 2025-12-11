@@ -1,129 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login & Register</title>
+    <title>Login</title>
     <style>
-        body {
-            font-family: Arial;
-            background: #f2f2f2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .box {
-            width: 350px;
-            padding: 25px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #ccc;
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #aaa;
-            border-radius: 5px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #007bff;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #0056b3;
-        }
-
-        .link {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .link span {
-            color: blue;
-            cursor: pointer;
-        }
+        body { font-family: Arial; padding: 30px; }
+        .box { width: 300px; margin: auto; padding: 20px; border: 1px solid #ccc; }
+        input { width: 100%; padding: 8px; margin: 5px 0; }
+        button { width: 100%; padding: 10px; background: blue; color: white; border: none; }
+        a { display: block; text-align: center; margin-top: 10px; }
     </style>
 </head>
 <body>
 
-<div class="box" id="loginBox">
+<div class="box">
     <h2>Login</h2>
-    <input type="text" id="loginUser" placeholder="Username" />
-    <input type="password" id="loginPass" placeholder="Password" />
+    <input type="text" id="loginUser" placeholder="Username">
+    <input type="password" id="loginPass" placeholder="Password">
+
     <button onclick="login()">Login</button>
 
-    <div class="link">
-        Don't have an account? <span onclick="showRegister()">Register</span>
-    </div>
+    <a href="register.html">New user? Register</a>
 </div>
 
-<div class="box" id="registerBox" style="display:none;">
-    <h2>Register</h2>
-
-    <input type="text" id="regUser" placeholder="Enter Username" />
-    <input type="password" id="regPass" placeholder="Enter Password" />
-    <button onclick="register()">Register</button>
-
-    <div class="link">
-        Already have an account? <span onclick="showLogin()">Login</span>
-    </div>
-</div>
-
-<script>
-    function showRegister() {
-        document.getElementById("loginBox").style.display = "none";
-        document.getElementById("registerBox").style.display = "block";
-    }
-
-    function showLogin() {
-        document.getElementById("registerBox").style.display = "none";
-        document.getElementById("loginBox").style.display = "block";
-    }
-
-    function register() {
-        let user = document.getElementById("regUser").value;
-        let pass = document.getElementById("regPass").value;
-
-        if (user === "" || pass === "") {
-            alert("Please fill all fields");
-            return;
-        }
-
-        // Save to localStorage
-        localStorage.setItem("username", user);
-        localStorage.setItem("password", pass);
-
-        alert("Registration Successful!");
-        showLogin();
-    }
-
-    function login() {
-        let user = document.getElementById("loginUser").value;
-        let pass = document.getElementById("loginPass").value;
-
-        let savedUser = localStorage.getItem("username");
-        let savedPass = localStorage.getItem("password");
-
-        if (user === savedUser && pass === savedPass) {
-            alert("Login Successful!");
-        } else {
-            alert("Invalid Username or Password!");
-        }
-    }
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>

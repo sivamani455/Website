@@ -3,13 +3,34 @@
 <head>
     <title>Home</title>
     <style>
-        body { font-family: Arial; padding: 30px; }
-        button { padding: 10px 20px; background: red; color: white; border: none; }
+        body { font-family: Arial; padding: 20px; }
+        .box { border:1px solid #ccc; padding:15px; margin-bottom:20px; }
+        h3 { margin-top:0; }
+        input { margin: 10px 0; }
+        button { padding:10px 20px; background:red; color:#fff; border:none; }
     </style>
 </head>
 <body>
 
-<h2>Welcome! You are logged in.</h2>
+<h2>Welcome! Upload Your Files</h2>
+
+<div class="box">
+    <h3>Upload File</h3>
+    <input type="file" id="uploadInput">
+    <button onclick="uploadMedia()">Upload</button>
+</div>
+
+<div class="box">
+    <h3>Uploaded Files</h3>
+    <h4>Documents</h4>
+    <ul id="fileList"></ul>
+
+    <h4>Photos</h4>
+    <ul id="photoList"></ul>
+
+    <h4>Videos</h4>
+    <ul id="videoList"></ul>
+</div>
 
 <button onclick="logout()">Logout</button>
 

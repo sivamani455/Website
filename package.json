@@ -1,0 +1,13 @@
+
+{
+  "name": "vercel-html-next",
+  "dependencies": {
+    "@vercel/kv": "latest",
+    "@vercel/blob": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "bcryptjs": "latest",
+    "cookie": "latest"
+  }
+}

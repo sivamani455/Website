@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html><head><title>Home</title>
+<style>body{font-family:Arial;padding:20px;}</style></head>
+<body>
+<h2>Dashboard</h2>
+<h3>Upload File</h3>
+<input type="file" id="fileInput">
+
+<h3>Photos</h3><ul id="photos"></ul>
+<h3>Videos</h3><ul id="videos"></ul>
+<h3>Documents</h3><ul id="docs"></ul>
+
+<br><a href="admin.html">Admin Page</a>
+
+<script>
+document.getElementById("fileInput").onchange=async(e)=>{
+ const fd=new FormData();
+ fd.append("file", e.target.files[0]);
+ await fetch("/apiupload.js",{method:"POST",body:fd});
+ load();
+};
+
+async function load(){
+ let r=await fetch("/apilist.js");
+ let j=await r.json();
+ fill("photos", j.photos);
+ fill("videos", j.videos);
+ fill("docs", j.docs);
+}
+
+function fill(id, arr){
+ let ul=document.getElementById(id);
+ ul.innerHTML="";
+ arr.forEach(f=>{
+   let li=document.createElement("li");
+   li.innerHTML=`<a href="${f.url}" target="_blank">${f.name}</a>`;
+   ul.appendChild(li);
+ });
+}
+
+load();
+</script>
+</body></html>

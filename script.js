@@ -90,12 +90,25 @@ function showList(storageKey, elementId) {
 
     list.forEach(item => {
         let li = document.createElement("li");
-        li.innerHTML = `<a href="${item.data}" target="_blank">${item.name}</a>`;
+
+        // If image or video → OPEN
+        if (item.type.startsWith("image/") || item.type.startsWith("video/")) {
+            li.innerHTML = `<a href="${item.data}" target="_blank">${item.name}</a>`;
+        }
+
+        // If document → DOWNLOAD
+        else {
+            li.innerHTML = `<a href="${item.data}" download="${item.name}">${item.name}</a>`;
+        }
+
         ul.appendChild(li);
     });
 }
+
 
 // Load lists on home page
 if (window.location.pathname.includes("home.html")) {
     displayMedia();
 }
+
+
